@@ -85,3 +85,10 @@ that you could have the content disappear after 1 hour (for example).
 
 Content must also be delivered over HTTPS to ensure that intermediaries cannot
 alter or observe the content.
+
+## Port Chalk to .Net
+
+[Chalk](https://github.com/chalk/chalk) is a nice API for displaying coloured
+text in a console. This should be straightforward to port. Ideally we would
+build using a default object and then chain via an immutable object with fluent
+methods that build a new object.
