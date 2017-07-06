@@ -86,6 +86,8 @@ that you could have the content disappear after 1 hour (for example).
 Content must also be delivered over HTTPS to ensure that intermediaries cannot
 alter or observe the content.
 
+Something like [file.io](https://file.io/) but open source and self-hostable.
+
 ## Port Chalk to .Net
 
 [Chalk](https://github.com/chalk/chalk) is a nice API for displaying coloured
