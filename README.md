@@ -57,6 +57,19 @@ movies/TV shows.
 [rr](http://rr-project.org/) is a debugging application that aids in debugging.
 It would be nice if there was something like this in C\#.
 
+As it turns out, you can do this in Visual Studio using a feature called
+'Historical Debugging', which is a feature of 'IntelliTrace'.
+
+For more information on the Visual Studio feature:
+https://docs.microsoft.com/en-gb/visualstudio/debugger/historical-debugging
+
+Unfortunately the feature is only available for VS Enterprise but does appear to
+perform the 'time travel debugging' feature that we'd want.
+
+Any implementation outside of Visual Studio would be a very difficult project,
+something like JetBrain's Rider has to do some of the same stuff to implement
+debugging so it might be a good reference.
+
 ## Editor config generator
 
 In many projects, people use EditorConfig to ensure that regardless of the editor
