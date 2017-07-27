@@ -107,3 +107,21 @@ Something like [file.io](https://file.io/) but open source and self-hostable.
 text in a console. This should be straightforward to port. Ideally we would
 build using a default object and then chain via an immutable object with fluent
 methods that build a new object.
+
+*This is now being implemented and the current work in progress is available at [Fabulous](https://github.com/sjp/Fabulous).*
+
+## An NTFS change journal provider for .NET
+
+There exists a `FileSystemWatcher` for C\# but it has some limitations which mean it does not necessarily capture all file system events. A workaround is to use polling in addition to capturing events via `FileSystemWatcher`, but this is not particularly appealing or performant.
+
+Using the NTFS change journal is a more complete solution. See https://blogs.msdn.microsoft.com/oldnewthing/20110812-00/?p=9913/ for more information on this.
+
+An ideal solution would attempt to use the NTFS change journal when possible, roll back to the `FileSystemWatcher` otherwise, and use polling as a last resort. An abstraction layer on top to automate this would be nice. Note: there are existing Nuget packages which do perform some of this already, but are missing the change journal handling.
+
+For further evidence that reading NTFS change journal records is performant, it is the same technique used in the very good search tool [Everything](https://voidtools.com)
+
+## Repackage the LockCheck program as a library
+
+The [LockCheck](https://github.com/cklutz/LockCheck) program uses a good and reliable method for determining whether a file is currently in use and locked by another process. It is a good program, but this would be more useful as a library so that other applications can use it.
+
+This is currently possible to be referenced as a library but it is not ideal if there is an entry point present. Additionally packaging as a .NET Standard application would give the library broader appeal.
