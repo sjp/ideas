@@ -103,12 +103,12 @@ Something like [file.io](https://file.io/) but open source and self-hostable.
 
 ## Port Chalk to .Net
 
-[Chalk](https://github.com/chalk/chalk) is a nice API for displaying coloured
+**This is now available on Nuget: [SJP.Fabulous](https://www.nuget.org/packages/SJP.Fabulous/)**
+
+~~[Chalk](https://github.com/chalk/chalk) is a nice API for displaying coloured
 text in a console. This should be straightforward to port. Ideally we would
 build using a default object and then chain via an immutable object with fluent
-methods that build a new object.
-
-*This is now being implemented and the current work in progress is available at [Fabulous](https://github.com/sjp/Fabulous).*
+methods that build a new object.~~
 
 ## An NTFS change journal provider for .NET
 
@@ -121,6 +121,8 @@ An ideal solution would attempt to use the NTFS change journal when possible, ro
 For further evidence that reading NTFS change journal records is performant, it is the same technique used in the very good search tool [Everything](https://voidtools.com)
 
 ## Repackage the LockCheck program as a library
+
+**This is now available as a work in progress at [Sherlock](https://github.com/sjp/Sherlock)**
 
 The [LockCheck](https://github.com/cklutz/LockCheck) program uses a good and reliable method for determining whether a file is currently in use and locked by another process. It is a good program, but this would be more useful as a library so that other applications can use it.
 
