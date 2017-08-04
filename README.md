@@ -129,3 +129,9 @@ For further evidence that reading NTFS change journal records is performant, it 
 The [LockCheck](https://github.com/cklutz/LockCheck) program uses a good and reliable method for determining whether a file is currently in use and locked by another process. It is a good program, but this would be more useful as a library so that other applications can use it.
 
 This is currently possible to be referenced as a library but it is not ideal if there is an entry point present. Additionally packaging as a .NET Standard application would give the library broader appeal.
+
+## A .NET package for wrapping EnumDisplaySettingsEx
+
+What might be useful is an easy way of determining the refresh rate of monitors on Windows. The primary reason this would be useful is if you wanted to display something often, but throttle to a maximum of the display rate of the monitor as the user would not be able to see it otherwise anyway.
+
+See the [DEVMODE](https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx) `dmDisplayFrequency` field for getting the value of the monitor's refresh rate.
