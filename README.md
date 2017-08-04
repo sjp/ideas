@@ -112,6 +112,8 @@ methods that build a new object.~~
 
 ## An NTFS change journal provider for .NET
 
+*After some work it seems that the use of change journals, while promising, relies upon permissions that hinder its usefulness. If the application has Administrator or System privileges then working with the change journal is going to work fine. It may still be useful to extend beyond FileSystemWatcher. The primary reason is for remote files. See the following links for more information (particularly "FileSystemWatcher Fencing (Part 1)"): [FileSystemWatcher Follies](https://blogs.msdn.microsoft.com/winsdk/2015/05/19/filesystemwatcher-follies/), [FileSystemWatcher Fencing (Part 1)](https://blogs.msdn.microsoft.com/winsdk/2015/06/04/filesystemwatcher-fencingpart-1/), [FileSystemWatcher Fencing (Part 2)](https://blogs.msdn.microsoft.com/winsdk/2015/09/15/filesystemwatcher-fencingpart-2/). Additionally, for a pretty good implementation of Change Journal reading, see: [Scrutiny](https://github.com/beaugunderson/scrutiny)*
+
 There exists a `FileSystemWatcher` for C\# but it has some limitations which mean it does not necessarily capture all file system events. A workaround is to use polling in addition to capturing events via `FileSystemWatcher`, but this is not particularly appealing or performant.
 
 Using the NTFS change journal is a more complete solution. See https://blogs.msdn.microsoft.com/oldnewthing/20110812-00/?p=9913/ for more information on this.
