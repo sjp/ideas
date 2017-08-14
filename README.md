@@ -114,6 +114,8 @@ methods that build a new object.~~
 
 ## An NTFS change journal provider for .NET
 
+**I've been working on something to improve file system notifications at [FsNotify](https://github.com/sjp/FsNotify)**
+
 *After some work it seems that the use of change journals, while promising, relies upon permissions that hinder its usefulness. If the application has Administrator or System privileges then working with the change journal is going to work fine. It may still be useful to extend beyond FileSystemWatcher. The primary reason is for remote files. See the following links for more information (particularly "FileSystemWatcher Fencing (Part 1)"): [FileSystemWatcher Follies](https://blogs.msdn.microsoft.com/winsdk/2015/05/19/filesystemwatcher-follies/), [FileSystemWatcher Fencing (Part 1)](https://blogs.msdn.microsoft.com/winsdk/2015/06/04/filesystemwatcher-fencingpart-1/), [FileSystemWatcher Fencing (Part 2)](https://blogs.msdn.microsoft.com/winsdk/2015/09/15/filesystemwatcher-fencingpart-2/). Additionally, for a pretty good implementation of Change Journal reading, see: [Scrutiny](https://github.com/beaugunderson/scrutiny)*
 
 There exists a `FileSystemWatcher` for C\# but it has some limitations which mean it does not necessarily capture all file system events. A workaround is to use polling in addition to capturing events via `FileSystemWatcher`, but this is not particularly appealing or performant.
@@ -137,3 +139,15 @@ This is currently possible to be referenced as a library but it is not ideal if 
 What might be useful is an easy way of determining the refresh rate of monitors on Windows. The primary reason this would be useful is if you wanted to display something often, but throttle to a maximum of the display rate of the monitor as the user would not be able to see it otherwise anyway.
 
 See the [DEVMODE](https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx) `dmDisplayFrequency` field for getting the value of the monitor's refresh rate.
+
+## A .NET Core / .NET Standard rewrite of TagLibSharp
+
+The [TagLibSharp](https://github.com/mono/taglib-sharp) library is very fully featured and works great on .NET Framework. Unfortunately it does not appear to have much maintenance (reasonably so for an old library).
+
+A consequence of the lack of maintenance is that it is not supported on .NET Core, .NET Standard, or many of the portable profiles. If a merge cannot occur within a reasonable period of time, perhaps a rewrite on a fork would be good.
+
+One good thing about the project is that it has unit tests. One thing I would like to do is rewrite some of the code to take advantage of some of the changes in C# over the years. In particular we can now take advantage of Linq to simplify iteration, and XDocuments to simplify access of XML documents.
+
+Additionally, the original style appears to be quite heavy on mutation, which I think makes things a bit less clear and could do with some changes. Preferably the use of immutable classes when representing objects should be done.
+
+Furthermore, the use of AutoMake and AutoConf is not really necessary and just complicates things, so they should be removed.
