@@ -139,3 +139,11 @@ This is currently possible to be referenced as a library but it is not ideal if 
 What might be useful is an easy way of determining the refresh rate of monitors on Windows. The primary reason this would be useful is if you wanted to display something often, but throttle to a maximum of the display rate of the monitor as the user would not be able to see it otherwise anyway.
 
 See the [DEVMODE](https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx) `dmDisplayFrequency` field for getting the value of the monitor's refresh rate.
+
+# An in-memory full-text search index
+
+.NET is currently missing a good full text search library. What might be a good idea is porting Whoosh from Python to C#.
+
+The intended use cases are to be able to search across databases agnostically, like Elasticsearch, but also being able to run the search engine in-process with other code.
+
+The main purpose for this is for me to be able to query against a database of audio tags. I want to be able to search against song titles, artists, albums, etc when I make a query and have them be ranked appropriately. Using the database to do this is OK (i.e. can have multiple 'like' operators), but a full text search index is definitely more suited to the job.
