@@ -140,10 +140,24 @@ What might be useful is an easy way of determining the refresh rate of monitors 
 
 See the [DEVMODE](https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx) `dmDisplayFrequency` field for getting the value of the monitor's refresh rate.
 
-# An in-memory full-text search index
+## An in-memory full-text search index
 
-.NET is currently missing a good full text search library. What might be a good idea is porting Whoosh from Python to C#.
+.NET is currently missing a good full text search library. What might be a good idea is porting [Whoosh](https://whoosh.readthedocs.io/en/latest/) from Python to C#. An alternative is [bleve](https://github.com/blevesearch/bleve) from Go.
 
 The intended use cases are to be able to search across databases agnostically, like Elasticsearch, but also being able to run the search engine in-process with other code.
 
 The main purpose for this is for me to be able to query against a database of audio tags. I want to be able to search against song titles, artists, albums, etc when I make a query and have them be ranked appropriately. Using the database to do this is OK (i.e. can have multiple 'like' operators), but a full text search index is definitely more suited to the job.
+
+## A Unicode/Emoji library
+
+Wrap the unicode spec as a .NET package. Do this by converting the XML data into a SQLite database. Gives us information on each of the characters and makes them searchable.
+
+## A disk cache library
+
+Want to be able to transcode and have a cache to store the results. The resulting objects should have various cache policies, LRU, FIFO, LIFO, manual cache expiration. Additionally this should store a configurable maximum amount of temporary storage. Should work similar to MemoryCache but DiskCache instead. There may already be a library that does this, but I have not yet done my research.
+
+## A database streaming notification library
+
+With several (but not all) vendors, it is possible to receive events from databases. One example of this is SQL Server's "event notifications". These behave similar to remote triggers.
+
+It may be useful to have an application that subscribes to database events. One situation is when performing a software upgrade, and tracking any changes to the database that the application would need to know about when upgrading has completed.
