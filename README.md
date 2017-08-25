@@ -128,7 +128,7 @@ For further evidence that reading NTFS change journal records is performant, it 
 
 ## Repackage the LockCheck program as a library
 
-**This is now available as a work in progress at [Sherlock](https://github.com/sjp/Sherlock)**
+**This is now available as a Nuget packge, see [Sherlock](https://github.com/sjp/Sherlock)**
 
 The [LockCheck](https://github.com/cklutz/LockCheck) program uses a good and reliable method for determining whether a file is currently in use and locked by another process. It is a good program, but this would be more useful as a library so that other applications can use it.
 
@@ -153,6 +153,8 @@ The main purpose for this is for me to be able to query against a database of au
 Wrap the unicode spec as a .NET package. Do this by converting the XML data into a SQLite database. Gives us information on each of the characters and makes them searchable.
 
 ## A disk cache library
+
+**A work in progress is available at [DiskCache](https://github.com/sjp/DiskCache).**
 
 Want to be able to transcode and have a cache to store the results. The resulting objects should have various cache policies, LRU, FIFO, LIFO, manual cache expiration. Additionally this should store a configurable maximum amount of temporary storage. Should work similar to MemoryCache but DiskCache instead. There may already be a library that does this, but I have not yet done my research.
 
