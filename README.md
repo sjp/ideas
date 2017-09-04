@@ -163,3 +163,9 @@ Want to be able to transcode and have a cache to store the results. The resultin
 With several (but not all) vendors, it is possible to receive events from databases. One example of this is SQL Server's "event notifications". These behave similar to remote triggers.
 
 It may be useful to have an application that subscribes to database events. One situation is when performing a software upgrade, and tracking any changes to the database that the application would need to know about when upgrading has completed.
+
+## Generic SQL parser
+
+What would be useful is to have a parser for SQL queries. The aim of such a query would be to ensure that any hardcoded query strings will be correct over different databases.
+
+This would not only be useful in porting between MSSQL, Oracle, PG, SQLite, etc but also between different versions of databases. For example, if you need to support SQL Server 2008 R2+, then a query cannot rely upon syntax that is only present in newer versions. A parser would help in this situation to ensure that the query is safe to use for all supported versions and platforms.
