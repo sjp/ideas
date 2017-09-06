@@ -103,6 +103,17 @@ alter or observe the content.
 
 Something like [file.io](https://file.io/) but open source and self-hostable.
 
+Basic ideas that I've been thinking of on how to implement this:
+
+* Use Salsa20/XSalsa20/ChaCha20 for encryption. Have the client generate a key.
+* Ensure that the content has a MAC, something like BLAKE2/SHA-3 should be OK.
+* Have the option of providing a public key to encrypt the key with. Makes transmission of the key safe and for the recipient-only.
+* JS should be used for encryption and decryption, so that the server really has no knowledge of anything besides the size of the blocks of bytes given to it.
+* Perhaps write a header for metadata in the encryption process. The reason why this could be useful is for retaining the filename. For example, if I store a file named `Big Company X - Final Contract.docx` in the encrypted store, I might want to retain this information so that when I download later, I also get to download with the same filename.
+* Progress for upload and encryption is important. Because this is done in JS, this might be slow, especially for large files.
+* Try to keep browser memory usage low to ensure mobile browsers can work.
+* Mega (i.e. mega.nz) appears to have the idea right with the UI -- try to emulate some of this.
+
 ## Port Chalk to .Net
 
 **This is now available on Nuget: [SJP.Fabulous](https://www.nuget.org/packages/SJP.Fabulous/)**
@@ -114,7 +125,7 @@ methods that build a new object.~~
 
 ## An NTFS change journal provider for .NET
 
-**I've been working on something to improve file system notifications at [FsNotify](https://github.com/sjp/FsNotify)**
+**A nuget package has now been published. See the project repo at [FsNotify](https://github.com/sjp/FsNotify) for more info.**
 
 *After some work it seems that the use of change journals, while promising, relies upon permissions that hinder its usefulness. If the application has Administrator or System privileges then working with the change journal is going to work fine. It may still be useful to extend beyond FileSystemWatcher. The primary reason is for remote files. See the following links for more information (particularly "FileSystemWatcher Fencing (Part 1)"): [FileSystemWatcher Follies](https://blogs.msdn.microsoft.com/winsdk/2015/05/19/filesystemwatcher-follies/), [FileSystemWatcher Fencing (Part 1)](https://blogs.msdn.microsoft.com/winsdk/2015/06/04/filesystemwatcher-fencingpart-1/), [FileSystemWatcher Fencing (Part 2)](https://blogs.msdn.microsoft.com/winsdk/2015/09/15/filesystemwatcher-fencingpart-2/). Additionally, for a pretty good implementation of Change Journal reading, see: [Scrutiny](https://github.com/beaugunderson/scrutiny)*
 
@@ -154,7 +165,7 @@ Wrap the unicode spec as a .NET package. Do this by converting the XML data into
 
 ## A disk cache library
 
-**A work in progress is available at [DiskCache](https://github.com/sjp/DiskCache).**
+**A nuget package has been published. Project repo is available at [DiskCache](https://github.com/sjp/DiskCache).**
 
 Want to be able to transcode and have a cache to store the results. The resulting objects should have various cache policies, LRU, FIFO, LIFO, manual cache expiration. Additionally this should store a configurable maximum amount of temporary storage. Should work similar to MemoryCache but DiskCache instead. There may already be a library that does this, but I have not yet done my research.
 
