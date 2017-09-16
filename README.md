@@ -180,3 +180,7 @@ It may be useful to have an application that subscribes to database events. One 
 What would be useful is to have a parser for SQL queries. The aim of such a query would be to ensure that any hardcoded query strings will be correct over different databases.
 
 This would not only be useful in porting between MSSQL, Oracle, PG, SQLite, etc but also between different versions of databases. For example, if you need to support SQL Server 2008 R2+, then a query cannot rely upon syntax that is only present in newer versions. A parser would help in this situation to ensure that the query is safe to use for all supported versions and platforms.
+
+## Regular expression data generator
+
+There is an existing tool, Rex, which generates data from a regular expression for .NET. What would be useful is updating this to work with .NET Standard, additionally, because there is no source available this will have to be decompiled from the initial release.
