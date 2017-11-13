@@ -159,6 +159,13 @@ The intended use cases are to be able to search across databases agnostically, l
 
 The main purpose for this is for me to be able to query against a database of audio tags. I want to be able to search against song titles, artists, albums, etc when I make a query and have them be ranked appropriately. Using the database to do this is OK (i.e. can have multiple 'like' operators), but a full text search index is definitely more suited to the job.
 
+Further reading:
+
+* There was attention on GitHub and HN for a JS search engine called **Wade**. A lot of discussion about the implementation was provided in a blog post and on HN. Further info:
+	* https://github.com/kbrsh/wade
+	* https://blog.kabir.ml/posts/inside-wade.html
+	* https://news.ycombinator.com/item?id=14805395
+
 ## A Unicode/Emoji library
 
 Wrap the unicode spec as a .NET package. Do this by converting the XML data into a SQLite database. Gives us information on each of the characters and makes them searchable.
