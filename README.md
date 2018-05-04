@@ -127,6 +127,8 @@ methods that build a new object.~~
 
 **A nuget package has now been published. See the project repo at [FsNotify](https://github.com/sjp/FsNotify) for more info.**
 
+**Additionally, it maybe a good idea to wrap the code in [Everything](https://www.voidtools.com/support/everything/sdk/csharp/) using PInvoke. That may avoid some of the problems of `FileSystemWatcher`.**
+
 *After some work it seems that the use of change journals, while promising, relies upon permissions that hinder its usefulness. If the application has Administrator or System privileges then working with the change journal is going to work fine. It may still be useful to extend beyond FileSystemWatcher. The primary reason is for remote files. See the following links for more information (particularly "FileSystemWatcher Fencing (Part 1)"): [FileSystemWatcher Follies](https://blogs.msdn.microsoft.com/winsdk/2015/05/19/filesystemwatcher-follies/), [FileSystemWatcher Fencing (Part 1)](https://blogs.msdn.microsoft.com/winsdk/2015/06/04/filesystemwatcher-fencingpart-1/), [FileSystemWatcher Fencing (Part 2)](https://blogs.msdn.microsoft.com/winsdk/2015/09/15/filesystemwatcher-fencingpart-2/). Additionally, for a pretty good implementation of Change Journal reading, see: [Scrutiny](https://github.com/beaugunderson/scrutiny)*
 
 There exists a `FileSystemWatcher` for C\# but it has some limitations which mean it does not necessarily capture all file system events. A workaround is to use polling in addition to capturing events via `FileSystemWatcher`, but this is not particularly appealing or performant.
@@ -153,7 +155,9 @@ See the [DEVMODE](https://msdn.microsoft.com/en-us/library/windows/desktop/dd183
 
 ## An in-memory full-text search index
 
-.NET is currently missing a good full text search library. What might be a good idea is porting [Whoosh](https://whoosh.readthedocs.io/en/latest/) from Python to C#. An alternative is [bleve](https://github.com/blevesearch/bleve) from Go.
+.NET currently has a good full text search library in the form of [Lucene.Net](https://lucenenet.apache.org/). What might be a good idea is porting [Whoosh](https://whoosh.readthedocs.io/en/latest/) from Python to C#. An alternative is [bleve](https://github.com/blevesearch/bleve) from Go.
+
+Alternatively we could wrap [Lucene.Net](https://lucenenet.apache.org/) so that it is easier or nicer to use than the port that is almost directly the same as Java code.
 
 The intended use cases are to be able to search across databases agnostically, like Elasticsearch, but also being able to run the search engine in-process with other code.
 
@@ -189,5 +193,7 @@ What would be useful is to have a parser for SQL queries. The aim of such a quer
 This would not only be useful in porting between MSSQL, Oracle, PG, SQLite, etc but also between different versions of databases. For example, if you need to support SQL Server 2008 R2+, then a query cannot rely upon syntax that is only present in newer versions. A parser would help in this situation to ensure that the query is safe to use for all supported versions and platforms.
 
 ## Regular expression data generator
+
+**A package has been created to do this: [GenerationRex](https://github.com/sjp/GenerationRex)**
 
 There is an existing tool, Rex, which generates data from a regular expression for .NET. What would be useful is updating this to work with .NET Standard, additionally, because there is no source available this will have to be decompiled from the initial release.
