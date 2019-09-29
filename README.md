@@ -54,6 +54,8 @@ movies/TV shows.
 
 ## `rr` for .NET
 
+**Update** This is now well supported in Visual Studio as an official feature: https://devblogs.microsoft.com/visualstudio/introducing-time-travel-debugging-for-visual-studio-enterprise-2019/
+
 [rr](http://rr-project.org/) is a debugging application that aids in debugging.
 It would be nice if there was something like this in C\#.
 
